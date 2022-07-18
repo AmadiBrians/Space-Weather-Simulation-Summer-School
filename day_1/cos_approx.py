@@ -3,8 +3,8 @@
 
 cosine approximation function
 """
-__author__ = 'Qusai Al Shidi'
-__email__ = 'qusai@umich.edu'
+__author__ = 'Amadi Brians C'
+__email__ = 'amadibrians@gmail.com'
 
 from math import factorial
 from math import pi
@@ -13,7 +13,9 @@ from math import pi
 def cos_approx(x, accuracy=10):
     """
     """
-    return 
+    cosyn = sum([((((-1)**n)/factorial(2 * n)) * x **(2 * n)) for n in range(accuracy)])
+        #comprehension = [2 * x for x in range(10) if x ** 2 > 3]
+    return cosyn
 
 
 
