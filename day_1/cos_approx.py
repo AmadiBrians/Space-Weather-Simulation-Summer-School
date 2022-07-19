@@ -8,20 +8,47 @@ __email__ = 'amadibrians@gmail.com'
 
 from math import factorial
 from math import pi
+import argparse
+import numpy as np
 
-
-def cos_approx(x, accuracy=10):
+def cos_approx(x, accuracy):
     """This function will return an approximate cosine using Taylor series."""
     
     cosyn = sum([((((-1)**n)/factorial(2 * n)) * x **(2 * n)) for n in range(accuracy)])
-        
+       
     return cosyn
 
 
 
+def parse_args():
+  # Create an argument parser:
+  parser = argparse.ArgumentParser(description = \
+                                   'This code computes the cosine of a value x using Taylor series')
+
+  # in_scalar: scalar value, type float:
+  parser.add_argument('-x', \
+                      help = 'This is the value of the angle', \
+                      type = float)
+  # npts: scalar value, type integer, default 5:
+  parser.add_argument('-npts', \
+                      help = 'This is the accuracy (default = 10)', \
+                      type = int, default = 10)
+  # actually parse the data now:
+  args = parser.parse_args()
+  return args
+# ------------------------------------------------------
+# My Main code:
+# ------------------------------------------------------
+# parse the input arguments:
+args = parse_args()
+
+npts = args.npts
+print(npts)
+# grab the variable do_this (a boolean, default false):
+x = args.x
+print(x)
+
 # Will only run if this is run from command line as opposed to imported
 if __name__ == '__main__':  # main code block
-    print("cos(0) = ", cos_approx(0))
-    print("cos(pi) = ", cos_approx(pi))
-    print("cos(2*pi) = ", cos_approx(2*pi))
-    print("more accurate cos(2*pi) = ", cos_approx(2*pi, accuracy=50))
+    print("cos(x) = ", cos_approx(x, npts))
+    print('cospy =', np.cos(x))
