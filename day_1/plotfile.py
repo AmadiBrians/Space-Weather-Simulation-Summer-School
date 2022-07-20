@@ -62,7 +62,7 @@ def read_ascii_file(file_name, index):
         ax.set_ylabel('SYMH (nT)')
         ax.grid(True)
         ax.legend()
-        plt.savefig("test2a.png")
+        plt.savefig("test3a.png")
 
     return data_dic
 
@@ -103,6 +103,7 @@ i = args.i
 print(i)
 
 #run the function for a given x and i
+x = '"C:/Users/amadi/SWSSS/Space-Weather-Simulation-Summer-School/day_2/omni_min_march2013.lst"'
 read_ascii_file(x, i)
 
 
