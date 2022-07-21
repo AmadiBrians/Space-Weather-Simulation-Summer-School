@@ -20,7 +20,7 @@ Unzipping a zip file using python
 # Importing the required packages
 import zipfile
 
-with zipfile.ZipFile('Data/jena_climate_2009_2016.csv.zip', 'r') as zip_ref:
+with zipfile.ZipFile('C:/Users/amadi/AppData/Local/Temp/Temp1_Data-20220720T151945Z-001.zip/Data/jena_climate_2009_2016.csv.zip', 'r') as zip_ref:
     zip_ref.extractall('Data/jena_climate_2009_2016/')
     
     
@@ -33,6 +33,32 @@ import pandas as pd
 
 csv_path = 'Data/jena_climate_2009_2016/jena_climate_2009_2016.csv'
 df = pd.read_csv(csv_path)
+
+print(df)
+#%%
+
+#prints out every 6 row from the 5th element
+df = df[5::6]
+
+print(df)
+
+#%%
+#this pops (remove) the datetime from the data
+date_Time = pd.to_datetime(df.pop('Date Time'), format = '%d.%m.%Y %H:%M:%S')
+
+print(date_Time)
+
+#%%
+print(df.head())
+
+#%%
+
+plot_cols = ['T (degC)', 'p (mbar)', 'rho (g/m**3)']
+plot_features = df[plot_cols]
+plot_features.index = date_Time
+_ = plot_features.plot(subplots=True)
+
+#%%
 
 
 #%%
