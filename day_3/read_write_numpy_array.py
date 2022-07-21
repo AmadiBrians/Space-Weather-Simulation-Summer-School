@@ -42,15 +42,15 @@ def read_write_np_array(n, m):
 def parse_args():
   # Create an argument parser:
   parser = argparse.ArgumentParser(description = \
-                                   'This code computes the cosine of a value x using Taylor series')
+                                   'This code prints a matrix with a n number of rows and m number of columns')
 
   # in_scalar: scalar value, type float:
   parser.add_argument('-n', \
-                      help = 'This is the value of the angle', \
-                      type = float)
+                      help = 'This is the number of rows', \
+                      type = int)
   # npts: scalar value, type integer, default 5:
   parser.add_argument('-m', \
-                      help = 'This is the accuracy (default = 10)', \
+                      help = 'This is the number of columns', \
                       type = int, default = 10)
   # actually parse the data now:
   args = parser.parse_args()
